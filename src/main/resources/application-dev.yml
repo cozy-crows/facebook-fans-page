@@ -1,0 +1,38 @@
+
+# Database
+database:
+    host: localhost
+    name: facebook-fans-page
+    user: root
+    password:
+
+# Spring-boot
+spring:
+    application:
+        name: @project.name@
+    profiles:
+        active: dev
+    datasource:
+        url: jdbc:mysql://${database.host}:3306/${database.name}?characterEncoding=utf-8&useUnicode=true&useSSL=false&rewriteBatchedStatements=TRUE
+        username: ${database.user}
+        password: ${database.password}
+    jpa:
+        database: mysql
+        generate-ddl: false
+        hibernate:
+            ddl-auto: validate
+    http:
+        encoding:
+            enabled: true
+            charset: utf-8
+            force: true
+
+
+# Database Migration
+liquibase:
+    enabled: true
+    change-log: classpath:/config/liquibase/master.xml
+    check-change-log-location: true
+    url: ${spring.datasource.url}
+    user: ${database.user}
+    password: ${database.password}

@@ -1,0 +1,11 @@
+# Spring-boot
+spring:
+    application:
+        name: @project.name@
+    profiles:
+        active: dev
+
+# Server
+server:
+    port: 8080
+
